@@ -16,7 +16,7 @@ public:
     ~MainWindow();
 
 private slots:
-
+    void cross(int i);
     void on_quantum1_clicked();
     void on_quantum2_clicked();
     void on_quantum3_clicked();

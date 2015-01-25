@@ -206,7 +206,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border: None</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
