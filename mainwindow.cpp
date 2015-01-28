@@ -10,6 +10,7 @@ static int player = 0;
 static int turn =0;
 static vector<int> chosen;
 //static vector<auto*> boxes = ;
+QGraph graph(9);
 
 MainWindow::MainWindow(QWidget *parent) :
 //    board = new ClassicalBoard;
@@ -17,12 +18,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    graph = new QGraph(8);
 }
 
 MainWindow::~MainWindow()
 {
-    delete graph;
+    //delete graph;
     delete ui;
 }
 
@@ -102,18 +102,21 @@ void MainWindow::mark( int i){
     if (chosen.size() == 2){
         player = 1 - player;
         turn += 1;
-        graph->addEdge(chosen[0], chosen[1]);
-        for(int z=0; z<2; z++){
-            int square = chosen[1-z];
-            MainWindow::enable(square, true);
-            chosen.pop_back();
-        }
+        graph.addEdge(chosen[0]-1, chosen[1]-1);
+        //for(int z=0; z<2; z++){
+            //int square = chosen[1-z];
+            MainWindow::enable(chosen[0], true);
+            MainWindow::enable(chosen[1], true);
+            chosen.clear();
+            //chosen.pop_back();
+        //}
+            if (graph.isCyclic()){
+        //    ui->comboBox->addItem("item " + QString::number(i));
+            }
     }
 
     //if cycle is detected: populate the dropdown, disable all buttons, enable the submitbutton
-//    if (graph->isCyclic()){
-//    ui->comboBox->addItem("item " + QString::number(i));
-//    }
+
 }
 
 void MainWindow::on_quantum1_clicked()

@@ -41,7 +41,7 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
         visited[currentnode] = true;
         recStack[currentnode] = true;
         nodelist.push_back(currentnode);
-        cout<<currentnode<<" has been added to nodelist"<<endl;
+        qDebug()<<currentnode<<" has been added to nodelist"<<endl;
 
         // Recur for all the vertices adjacent to this vertex
         list<int>::iterator i;
@@ -50,6 +50,7 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
             if ( !visited[*i] && detectCycle(*i, currentnode, visited, recStack) && *i!=parentnode)
             {
                 // i is a pointer to a node, n. If node n has been visited and
+                qDebug()<<"Node "<<*i<<" has been visited"<<endl;
                 return true;
             }
             else if ((recStack[*i]) && *i!=parentnode)
@@ -125,6 +126,7 @@ bool QGraph::isCyclic()
     }
     for(int i = 0; i < V; i++) //Examines all the nodes of the graph.
     {
+        qDebug()<<i;
         if (detectCycle(i, i, visited, recStack))
         {
         list<int>::iterator p;

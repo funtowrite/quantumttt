@@ -34,7 +34,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QGraph *graph;
+    //QGraph *graph;
 //    ClassicalBoard *board;
 };
 
