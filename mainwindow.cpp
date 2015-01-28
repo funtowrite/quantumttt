@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    //delete graph;
+//    delete graph;
     delete ui;
 }
 
@@ -110,9 +110,9 @@ void MainWindow::mark( int i){
             chosen.clear();
             //chosen.pop_back();
         //}
-            if (graph.isCyclic()){
+//            if (graph.isCyclic()){
         //    ui->comboBox->addItem("item " + QString::number(i));
-            }
+//            }
     }
 
     //if cycle is detected: populate the dropdown, disable all buttons, enable the submitbutton

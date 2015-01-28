@@ -19,12 +19,23 @@ public:
     int keynode; // name of a node present within the cycle
     list<int> nodelist;    // shortlist of nodes that might be in the cycle
     list<int> nodesincycle;    // final list of nodes in the cycle
+    ~QGraph();
 };
 
 QGraph::QGraph(int V)
 {
     this->V = V;
     adj = new list<int>[V];
+}
+
+QGraph::~QGraph()
+{
+    for(int z=0; z < V; z++){
+        adj[z].clear();
+    }
+    adj->clear();
+    nodelist.clear();
+    nodesincycle.clear();
 }
 
 void QGraph::addEdge(int v, int w) //v is the node number. Each node has a list of adjacent nodes
