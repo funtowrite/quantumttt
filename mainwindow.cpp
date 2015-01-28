@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QGraph graph(8);
+    graph = new QGraph(8);
 }
 
 MainWindow::~MainWindow()
@@ -94,10 +94,9 @@ void MainWindow::mark( int i){
         default:
             break;
     }
-//    ui->comboBox->addItem("item " + QString::number(i));
+
     chosen.push_back(i);
     MainWindow::enable(i, false);
-//    ui->quantum1->setFont(QFont ("Courier", 29));
 
     //if two squares have been selected: reset count and change players
     if (chosen.size() == 2){
@@ -112,9 +111,9 @@ void MainWindow::mark( int i){
     }
 
     //if cycle is detected: populate the dropdown, disable all buttons, enable the submitbutton
-    if (graph->isCyclic()){
-
-    }
+//    if (graph->isCyclic()){
+//    ui->comboBox->addItem("item " + QString::number(i));
+//    }
 }
 
 void MainWindow::on_quantum1_clicked()

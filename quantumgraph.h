@@ -3,6 +3,7 @@
 #include <list>
 #include <limits.h>
 #include <algorithm>
+#include <QDebug>
 
 using namespace std;
 
@@ -53,9 +54,9 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
             }
             else if ((recStack[*i]) && *i!=parentnode)
             {
-                cout<<"Node "<<*i<<" found on recStack"<<endl;
+                qDebug()<<"Node "<<*i<<" found on recStack"<<endl;
                 keynode = *i;
-                cout<<"current node is "<<currentnode<<endl;
+                qDebug()<<"current node is "<<currentnode<<endl;
                 //nonreciprocal_cycle.push_back(*i);
                 return true;
             }
@@ -63,7 +64,7 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
             {
                 list<int>::iterator it;
                 int count = 0 ;
-                cout<<"count is "<<count<<endl;
+                qDebug()<<"count is "<<count<<endl;
                 it = adj[currentnode].begin();
                 for (int p=0; p<adj[currentnode].size(); ++p)
                 {
@@ -116,10 +117,10 @@ bool QGraph::isCyclic()
     for(int i = 0; i < V; i++) //Examines all the nodes of the graph.
     {
         list<int>::iterator it;
-        cout<<"Adjacency list for node "<<i<< " is "<< endl;
+        qDebug()<<"Adjacency list for node "<<i<< " is "<< endl;
         for (it= adj[i].begin(); it != adj[i].end(); ++it)
         {
-            cout<< *it <<endl;
+            qDebug()<< *it <<endl;
         }
     }
     for(int i = 0; i < V; i++) //Examines all the nodes of the graph.
@@ -131,7 +132,7 @@ bool QGraph::isCyclic()
         for (p=find(nodelist.begin(),nodelist.end(),keynode);p!=nodelist.end();p++)
         {
         nodesincycle.push_back(*p);
-        cout<<*p<<endl;
+        qDebug()<<*p<<endl;
         }
             return true;
         }
