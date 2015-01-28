@@ -58,14 +58,17 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
         list<int>::iterator i;
         for(i = adj[currentnode].begin(); i != adj[currentnode].end(); ++i) //begin returns a pointer to the first element in adj
         {
+            cout << *i<<endl;
             if ( !visited[*i] && detectCycle(*i, currentnode, visited, recStack) && *i!=parentnode)
             {
                 // i is a pointer to a node, n. If node n has been visited and
+                cout<< "In HERER"<<endl;
                 qDebug()<<"Node "<<*i<<" has been visited"<<endl;
                 return true;
             }
             else if ((recStack[*i]) && *i!=parentnode)
             {
+                cout << "REACHED HERE2 "<<endl;
                 qDebug()<<"Node "<<*i<<" found on recStack"<<endl;
                 keynode = *i;
                 qDebug()<<"current node is "<<currentnode<<endl;
@@ -93,6 +96,7 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
                     cout<<"count is "<<count<<endl;
                     if (count==2)
                     {
+                        keynode = *i;
                         cout << "aha! Trouble at node" << *i <<endl;
                         return true;
                     }
@@ -103,8 +107,10 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
         }
     }
     recStack[currentnode] = false;  // remove the vertex from recursion stack
-    nodelist.pop_back();
-    cout<<currentnode<<" has been removed from nodelist"<<endl;
+    if (nodelist.size() > 0){
+        nodelist.pop_back();
+    }
+    qDebug()<<currentnode<<" has been removed from nodelist"<<endl;
     return false;
 }
 
@@ -140,10 +146,12 @@ bool QGraph::isCyclic()
         qDebug()<<i;
         if (detectCycle(i, i, visited, recStack))
         {
+            cout << "here" << endl;
         list<int>::iterator p;
 
         for (p=find(nodelist.begin(),nodelist.end(),keynode);p!=nodelist.end();p++)
         {
+            cout << "for something in p" <<endl;
         nodesincycle.push_back(*p);
         qDebug()<<*p<<endl;
         }

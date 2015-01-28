@@ -9,7 +9,7 @@ using namespace std;
 static int player = 0;
 static int turn =0;
 static vector<int> chosen;
-//static vector<auto*> boxes = ;
+//static vector<Ui*> boxes;
 QGraph graph(9);
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+//    boxes={ui->quantum1, ui->quantum2};
 }
 
 MainWindow::~MainWindow()
@@ -56,6 +57,39 @@ void MainWindow::enable(int j, bool enabled){
             ui->quantum9->setEnabled(enabled);
             break;
         default:
+            break;
+    }
+}
+
+void MainWindow::markClassical(string n, int k){
+    QString m = QString::fromStdString(n);
+    switch(k){
+        case 1:
+            ui->classical1->setText(m);
+            break;
+        case 2:
+            ui->classical2->setText(m);
+            break;
+        case 3:
+            ui->classical3->setText(m);
+            break;
+        case 4:
+            ui->classical4->setText(m);
+            break;
+        case 5:
+            ui->classical5->setText(m);
+            break;
+        case 6:
+            ui->classical6->setText(m);
+            break;
+        case 7:
+            ui->classical7->setText(m);
+            break;
+        case 8:
+            ui->classical8->setText(m);
+            break;
+        case 9:
+            ui->classical9->setText(m);
             break;
     }
 }
@@ -103,16 +137,14 @@ void MainWindow::mark( int i){
         player = 1 - player;
         turn += 1;
         graph.addEdge(chosen[0]-1, chosen[1]-1);
-        //for(int z=0; z<2; z++){
-            //int square = chosen[1-z];
             MainWindow::enable(chosen[0], true);
             MainWindow::enable(chosen[1], true);
             chosen.clear();
-            //chosen.pop_back();
-        //}
-//            if (graph.isCyclic()){
-        //    ui->comboBox->addItem("item " + QString::number(i));
-//            }
+            if (turn > 1){
+                if (graph.isCyclic()){
+                ui->comboBox->addItem("item " + QString::number(i));
+                }
+            }
     }
 
     //if cycle is detected: populate the dropdown, disable all buttons, enable the submitbutton

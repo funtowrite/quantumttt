@@ -17,6 +17,7 @@ public:
     ~MainWindow();
     void mark(int i);
     void trial();
+    void markClassical(std::string n, int k);
 
 
 private slots:
