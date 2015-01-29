@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>833</width>
-    <height>645</height>
+    <width>799</width>
+    <height>786</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,9 +20,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>130</y>
-      <width>111</width>
+      <x>660</x>
+      <y>310</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -36,9 +36,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>230</y>
-      <width>111</width>
+      <x>660</x>
+      <y>410</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -52,9 +52,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>330</y>
-      <width>111</width>
+      <x>660</x>
+      <y>510</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -68,9 +68,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>230</y>
-      <width>111</width>
+      <x>560</x>
+      <y>410</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -84,9 +84,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>330</y>
-      <width>111</width>
+      <x>560</x>
+      <y>510</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -100,10 +100,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>130</y>
-      <width>111</width>
-      <height>111</height>
+      <x>560</x>
+      <y>310</y>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -117,7 +117,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>230</y>
+      <y>410</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -133,7 +133,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>330</y>
+      <y>510</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -149,9 +149,9 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>130</y>
+      <y>310</y>
       <width>111</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -162,7 +162,7 @@
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>130</y>
+      <y>310</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -174,9 +174,9 @@
    <widget class="QPushButton" name="quantum5">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>230</y>
-      <width>111</width>
+      <x>150</x>
+      <y>410</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -187,9 +187,9 @@
    <widget class="QPushButton" name="quantum8">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>330</y>
-      <width>111</width>
+      <x>150</x>
+      <y>510</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -201,7 +201,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>230</y>
+      <y>410</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -214,7 +214,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>330</y>
+      <y>510</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -227,9 +227,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>130</y>
+      <y>310</y>
       <width>111</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -246,7 +246,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>510</y>
+      <y>690</y>
       <width>114</width>
       <height>32</height>
      </rect>
@@ -268,7 +268,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>470</y>
+      <y>650</y>
       <width>311</width>
       <height>26</height>
      </rect>
@@ -277,9 +277,9 @@
    <widget class="QPushButton" name="quantum6">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>230</y>
-      <width>111</width>
+      <x>250</x>
+      <y>410</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -290,9 +290,9 @@
    <widget class="QPushButton" name="quantum9">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>330</y>
-      <width>111</width>
+      <x>250</x>
+      <y>510</y>
+      <width>101</width>
       <height>111</height>
      </rect>
     </property>
@@ -303,10 +303,10 @@
    <widget class="QPushButton" name="quantum3">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>130</y>
-      <width>111</width>
-      <height>111</height>
+      <x>250</x>
+      <y>310</y>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -316,27 +316,33 @@
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>20</x>
       <y>10</y>
-      <width>711</width>
-      <height>31</height>
+      <width>811</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Lucida Grande'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Welcome to Quantum Tic Tac Toe! Choose two boxes on your turn by clicking on them in the Quantum Board&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Georgia,serif'; font-size:13.5pt; font-weight:600; color:#313142;&quot;&gt;Rules&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000;&quot;&gt;As in normal Tic-Tac-Toe, the game is played on a 3-by-3 board, and each of two players takes turns placing pieces, trying to get 3 in a row.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000; background-color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000;&quot;&gt;But in Quantum Tic-Tac-Toe, you cannot control the classical board directly. Game play takes place on the quantum board, on which you make two marks on each turn in separate squares. These are your two ‘potential’ moves and are marked by the player’s symbol, as well as the turn on which the move was made (eg. X1, O3). In choosing two squares to place your move, you are entangling them. The classical board can only be altered when the entanglement collapses.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000; background-color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000;&quot;&gt;Collapse can only occur when the entangled squares form a closed circuit – a ‘cyclic’ entanglement. This necessarily means that each square involved in the entanglement has at least two marks, each of which was made on a different move. Then, the player who caused the cyclic entanglement will have to choose one out of his last two potential moves to make real. This uniquely determines which of the two marks is made real in &lt;/span&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:11pt; font-weight:600; color:#000000;&quot;&gt;all&lt;/span&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000;&quot;&gt; of the squares in the entanglement – this is called a collapse, and the real marks are marked on the classical board.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000; background-color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000;&quot;&gt;The game ends when the classical board has a line of three pieces, much like real tic-tac-toe.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>100</y>
-      <width>141</width>
+      <y>280</y>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
@@ -353,8 +359,8 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>95</y>
-      <width>131</width>
+      <y>275</y>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
@@ -371,8 +377,8 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>50</y>
-      <width>62</width>
+      <y>230</y>
+      <width>81</width>
       <height>31</height>
      </rect>
     </property>
@@ -388,15 +394,15 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="player">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>50</y>
-      <width>31</width>
+      <x>130</x>
+      <y>220</y>
+      <width>41</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>50</pointsize>
+      <pointsize>36</pointsize>
      </font>
     </property>
     <property name="text">
@@ -406,8 +412,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>50</y>
+      <x>160</x>
+      <y>230</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -427,8 +433,8 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>833</width>
-     <height>22</height>
+     <width>799</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuQuantum_Tic_Tac_Toe">
