@@ -19,7 +19,7 @@ public:
     void trial();
     void markClassical(std::string n, int k);
     void translate(std::vector<int>);
-    void markQuantum(string n, int k);
+    void markQuantum(std::string n, int k);
 
 private slots:
     void on_quantum1_clicked();

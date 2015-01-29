@@ -7,6 +7,7 @@
 #include <vector>
 #include <QDebug>
 #include <sstream>
+
 using namespace std;
 static int player = 1;
 static int turn =0;
@@ -103,30 +104,39 @@ void MainWindow::markClassical(string n, int k){
     switch(k){
         case 1:
             ui->classical1->setText(m);
+            ui->classical1->setFont(QFont ("Arial", 100));
             break;
         case 2:
             ui->classical2->setText(m);
+            ui->classical2->setFont(QFont ("Arial", 100));
             break;
         case 3:
             ui->classical3->setText(m);
+            ui->classical3->setFont(QFont ("Arial", 100));
             break;
         case 4:
             ui->classical4->setText(m);
+            ui->classical4->setFont(QFont ("Arial", 100));
             break;
         case 5:
             ui->classical5->setText(m);
+            ui->classical5->setFont(QFont ("Arial", 100));
             break;
         case 6:
             ui->classical6->setText(m);
+            ui->classical6->setFont(QFont ("Arial", 100));
             break;
         case 7:
             ui->classical7->setText(m);
+            ui->classical7->setFont(QFont ("Arial", 100));
             break;
         case 8:
             ui->classical8->setText(m);
+            ui->classical8->setFont(QFont ("Arial", 100));
             break;
         case 9:
             ui->classical9->setText(m);
+            ui->classical9->setFont(QFont ("Arial", 100));
             break;
     }
 }
@@ -152,7 +162,7 @@ void MainWindow::mark( int i){
         symbol = "O";
     }
     //symbol += QString::number(turn);
-    symbol += to_string(turn);
+    symbol += (turn);
     QString symbol2;// = QString::fromStdString(symbol);
     switch(i){
         case 1:
@@ -256,19 +266,20 @@ void MainWindow::collapseCycle(){
     //call enable that box, let the user choose who is and submit
     //pass chosen list to
     //re-enable all squares that are left
-    superqboard_status = game.player_chooses_collapse();
-    int squareToChoose;
-    for(int u= 0 ;  u < 9; u++){
-        if (superqboard_status[u][0] !=superqboard_status[u][1]){
-            squareToChoose = u;
-            break;
-        }
-    }
-    MainWindow::markQuantum("Choose a\nmark for\nthis board", squareToChoose);
+//    superqboard_status = game.player_chooses_collapse();
+//    int squareToChoose;
+//    for(int u= 0 ;  u < 9; u++){
+//        if (superqboard_status[u][0] !=superqboard_status[u][1]){
+//            squareToChoose = u;
+//            break;
+//        }
+//    }
+//    MainWindow::markQuantum("Choose a\nmark for\nthis board", squareToChoose);
     ui->comboBox->addItem("X");
     ui->comboBox->addItem("O");
     ui->comboBox->setEnabled(true);
     ui->submitBtn->setEnabled(true);
+//    cout << ui->comboBox->itemData(ui->comboBox->currentIndex())<<endl;
 //    graph.reset_graph();
 
 }
