@@ -3,7 +3,7 @@
 #include "quantumgraph.h"
 #include "classical_board.h"
 #include <string>
-#include <sstream>>
+#include <sstream>
 #include <vector>
 #include <QDebug>
 #include <sstream>
@@ -119,7 +119,12 @@ void MainWindow::mark( int i){
         symbol = "O";
     }
     //symbol += QString::number(turn);
-    symbol += to_string(turn);
+
+    stringstream ss;
+    ss << turn;
+    string str = ss.str();
+
+    symbol += str;
     QString symbol2;// = QString::fromStdString(symbol);
     switch(i){
         case 1:
