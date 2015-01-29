@@ -31,7 +31,9 @@ public:
     int findstartingelem(int i, int nextnode);
 };
 
-tictactoe_game::tictactoe_game(void){};
+tictactoe_game::tictactoe_game(){
+    cout << "Initialized game" << endl;
+};
 
 void tictactoe_game::start(tictactoe_player const player)
 {
@@ -42,7 +44,7 @@ void tictactoe_game::start(tictactoe_player const player)
             qstatus[j][k]=0; // assign 0 to each cell (means no one has made a move)
         }
     }
-}
+};
 
 struct tictactoe_cell //indexes each vector representing a cell by its row and column
 {
@@ -61,28 +63,34 @@ struct tictactoe_cell //indexes each vector representing a cell by its row and c
 
 void tictactoe_game::update(int getplayermove[3], int player, QGraph qgraph)
 {
-    int cell1=getplayermove[1];
-    int cell2=getplayermove[2];
-    int turnnumber=getplayermove[3]; //get info about what the player did
+    cout<<"update has been called"<<endl;
+    int cell1=getplayermove[0];
+    int cell2=getplayermove[1];
+    int turnnumber=getplayermove[2]; //get info about what the player did
     qstatus[cell1][turnnumber] = player;
     qstatus[cell2][turnnumber] = player;
-}
+};
 
 superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
 {
     //This function generates two options for how to collapse the quantum board
     superqboard_status twooptions;
-
+        cout<<"line 75"<<endl;
     int nextnode;
+    list <int>::iterator it;
+    it=nodelist.begin();
+
     for (int k=0; k<nodelist.size(); k++)
     {
-        list <int>::iterator it;
-        it=nodelist.begin();
+        cout<<"line 79"<<endl;
         int currentnode=*it;
+        cout<<"the iterator is pointing at"<<*it<<endl;
+        cout<<"k is"<<k<<endl;
         if (k<nodelist.size()-1)
         {
             advance(it,1);
             nextnode=*it;
+            cout<<"line 87, next node is"<<nextnode<<endl;
         }
         else if (k==nodelist.size()-1)
         {
@@ -90,8 +98,12 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
             nextnode=*it;
         }
         int startfromhere=findstartingelem(currentnode, nextnode);
-        twooptions[1][currentnode]=qstatus[currentnode][startfromhere];
-        twooptions[2][nextnode]=qstatus[currentnode][startfromhere];
+        cout<<"currentnode is "<<currentnode<<endl;
+            cout<<"nextnode is "<<nextnode<<endl;
+        twooptions[0][currentnode]=qstatus[currentnode][startfromhere];
+        twooptions[1][nextnode]=qstatus[currentnode][startfromhere];
+        cout<<"after currentnode is "<<currentnode<<endl;
+            cout<<"after nextnode is "<<nextnode<<endl;
     }
 
 
