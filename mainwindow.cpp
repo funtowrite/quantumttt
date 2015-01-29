@@ -161,6 +161,8 @@ void MainWindow::translate(vector<int> moves){
     QString o = QString::fromStdString("O");
     int p1 = MainWindow::num_wins(moves, x);
     int p2 = MainWindow::num_wins(moves, o);
+    ui->p1score->setText(QString::number(p1));
+    ui->p2score->setText(QString::number(p2));
     qDebug()<<"Player 1 Score: "<<p1;
     qDebug()<<"Player 2 Score: "<<p2;
 }
