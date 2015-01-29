@@ -4,7 +4,7 @@
 #include <limits.h>
 #include <algorithm>
 #include <vector>
-#include <quantumgraph.h>
+#include "quantumgraph.h"
 #include <stdio.h>
 
 using namespace std;
@@ -25,6 +25,7 @@ public:
     tictactoe_game();
     qboard_status qstatus; // initalizes the array that records the status of the quantum board
     superqboard_status player_chooses_collapse(list<int> list);//
+
     void start(tictactoe_player const player);
     void update(int[3] , int, QGraph );
     int findstartingelem(int i, int nextnode);
@@ -92,12 +93,21 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
         twooptions[1][currentnode]=qstatus[currentnode][startfromhere];
         twooptions[2][nextnode]=qstatus[currentnode][startfromhere];
     }
-//    qstatus.fill(0);
-    for (int p=0; p<9; p++){
-        for (int q=0; q<9; q++){
-            qstatus[p][q]=0;
+
+
+    for(int i = 0; i < 9; i++)
+    {
+        for(int j = 0; j < 9; j++)
+        {
+            qstatus[i][j] = 0;
         }
     }
+    //qstatus.fill(0);
+//    for (int p=0; p<9; p++){
+//        qstatus[p].fill(0);
+//    }
+//    memset(qstatus, 0, sizeof(qstatus[0][0]) * 9 * 9);
+
     return twooptions;
 }
 
