@@ -13,10 +13,9 @@ static int turn =0;
 static vector<int> chosen;
 //static vector<Ui*> boxes;
 QGraph graph(9);
-Board board(9);
+Board board(3);
 //tictactoe_game game();
 //typedef array<int[9], 2> superqboard_status;
-
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -145,34 +144,66 @@ void MainWindow::translate(vector<int> moves){
 }
 
 void MainWindow::mark( int i){
+    string symbol;
+    if (player == 1){
+        symbol = "X";
+    }
+    else {
+        symbol = "O";
+    }
+    //symbol += QString::number(turn);
+    symbol += to_string(turn);
+    QString symbol2;// = QString::fromStdString(symbol);
     switch(i){
         case 1:
-            //TBD: getText from Square and setText
-            ui->quantum1->setText("1");
+            board.add(symbol, 0);
+            //s = board.get_squares()[0];
+            symbol2 = QString::fromStdString(board.get_squares()[0].format_string());
+            ui->quantum1->setText(symbol2);
             break;
         case 2:
-            ui->quantum2->setText("2");
+            board.add(symbol, 1);
+            symbol2 = QString::fromStdString(board.get_squares()[1].format_string());
+            ui->quantum2->setText(symbol2);
+
             break;
         case 3:
-            ui->quantum3->setText("3");
+            board.add(symbol, 2);
+            symbol2 = QString::fromStdString(board.get_squares()[2].format_string());
+            ui->quantum3->setText(symbol2);
+
             break;
         case 4:
-            ui->quantum4->setText("4");
+            board.add(symbol, 3);
+            symbol2 = QString::fromStdString(board.get_squares()[3].format_string());
+            ui->quantum4->setText(symbol2);
             break;
         case 5:
-            ui->quantum5->setText("5");
+            board.add(symbol, 4);
+            symbol2 = QString::fromStdString(board.get_squares()[4].format_string());
+            ui->quantum5->setText(symbol2);
             break;
         case 6:
-            ui->quantum6->setText("6");
+            board.add(symbol, 5);
+            symbol2 = QString::fromStdString(board.get_squares()[5].format_string());
+            ui->quantum6->setText(symbol2);
             break;
         case 7:
-            ui->quantum7->setText("7");
+            board.add(symbol, 6);
+            symbol2 = QString::fromStdString(board.get_squares()[6].format_string());
+            ui->quantum7->setText(symbol2);
             break;
         case 8:
-            ui->quantum8->setText("8");
+            board.add(symbol, 7);
+            symbol2 = QString::fromStdString(board.get_squares()[7].format_string());
+            ui->quantum8->setText(symbol2);
             break;
         case 9:
-            ui->quantum9->setText("9");
+            board.add(symbol, 8);
+            symbol2 = QString::fromStdString(board.get_squares()[8].format_string());
+            ui->quantum9->setText(symbol2);
+//            ui->comboBox->removeItem(0);
+
             break;
         default:
             break;

@@ -14,7 +14,7 @@ public:
 	void add(string);
 	void clear();
 	char get_val(int);
-	string format_string(vector<string>);
+    string format_string();
 };
 
 Square::Square(int pos){
@@ -44,12 +44,12 @@ char Square::get_val(int i){
 	return 0;
 }
 
-string Square::format_string(vector<string> moves){
+string Square::format_string(){
 	int i;
 	string moves_list = "";
 
-	for (i = 0; i < moves.size(); i++){
-		moves_list += moves[i];
+    for (i = 0; i < this->moves.size(); i++){
+        moves_list += this->moves[i];
 
 		if ((i + 1)%3 == 0){
 			moves_list += "\n\n";
