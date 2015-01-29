@@ -92,11 +92,12 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
         twooptions[1][currentnode]=qstatus[currentnode][startfromhere];
         twooptions[2][nextnode]=qstatus[currentnode][startfromhere];
     }
-    qstatus.fill(0);
-//    for (int p=0; p<9; p++){
-//        qstatus[p].fill(0);
-//    }
-//    memset(qstatus, 0, sizeof(qstatus[0][0]) * 9 * 9);
+//    qstatus.fill(0);
+    for (int p=0; p<9; p++){
+        for (int q=0; q<9; q++){
+            qstatus[p][q]=0;
+        }
+    }
     return twooptions;
 }
 
