@@ -8,6 +8,7 @@
 #include <vector>
 #include <QDebug>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 static int player = 1;
@@ -17,6 +18,10 @@ static vector<int> chosen;
 QGraph graph(9);
 Board board(3);
 tictactoe_game game;
+static int first;
+static int second;
+int squareToChoose;
+array<int[9], 2> superqboard;
 //typedef array<int[9], 2> superqboard_status;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -229,6 +234,7 @@ void MainWindow::mark( int i){
 
     //if two squares have been selected: reset count and change players
     if (chosen.size() == 2){
+        cout<<"line 232 of main"<<endl;
         player = 3 - player;
         ui->player->setText(QString::number(player));
         turn += 1;
@@ -241,7 +247,7 @@ void MainWindow::mark( int i){
         chose[0] = chosen[0]-1;
         chose[1] = chosen[1]-1;
         chose[2] = chosen[2];
-
+        cout<<"calling update"<<endl;
         game.update(chose, player, graph); //takes in a vector??
         chosen.clear();
         if (graph.isCyclic()){
@@ -277,22 +283,23 @@ void MainWindow::collapseCycle(){
     //call enable that box, let the user choose who is and submit
     //pass chosen list to
     //re-enable all squares that are left
-    array<int[9], 2> superqboard_status;
-    superqboard_status = game.player_chooses_collapse(graph.nodelist);
-//    int squareToChoose;
-//    for(int u= 0 ;  u < 9; u++){
-//        if (superqboard_status[u][0] !=superqboard_status[u][1]){
-//            squareToChoose = u;
-//            break;
-//        }
-//    }
-//    MainWindow::markQuantum("Choose a\nmark for\nthis board", squareToChoose);
+
+    superqboard = game.player_chooses_collapse(graph.nodelist);
+    for(int u= 0 ;  u < 9; u++){
+        if (superqboard[0][u] !=superqboard[1][u]){
+            squareToChoose = u;
+            break;
+        }
+    }
+    first = superqboard[0][squareToChoose];
+    second = superqboard[1][squareToChoose];
+    cout<<"square to choose"<<squareToChoose<<endl;
+    MainWindow::markQuantum("Choose a\nmark for\nthis board", squareToChoose+1);
     ui->comboBox->addItem("X");
     ui->comboBox->addItem("O");
     ui->comboBox->setEnabled(true);
     ui->submitBtn->setEnabled(true);
-//    cout << ui->comboBox->itemData(ui->comboBox->currentIndex())<<endl;
-//    graph.reset_graph();
+
 
 }
 
@@ -348,7 +355,37 @@ void MainWindow::on_quantum9_clicked()
 //onclick: disable button and clear and disable dropdown, change classical board text, disable quantum board squares
 void MainWindow::on_submitBtn_clicked()
 {
+   //cout << ui->comboBox->itemData(ui->comboBox->currentIndex())<<endl;
+    int selected = ui->comboBox->currentIndex();
+    //    graph.reset_graph();
+    vector<int> vec1;
+    vector<int> vec2;
+    //superqboard_status = game.player_chooses_collapse(graph.nodelist);
+    for(int u= 0 ;  u < 9; u++){
+        vec1.push_back(superqboard[0][u]);
+    }
+
+    for(int u= 0 ;  u < 9; u++){
+
+        if (superqboard[0][u] == 0){
+            cout<< "its *** "<< u;
+            MainWindow::enable(u+1, true);
+        }
+        vec2.push_back(superqboard[1][u]);
+    }
+    if (selected == first-1){
+       //std::copy_n(superqboard_status[0], 9, buf);
+        MainWindow::translate(vec1);
+
+    }
+    else{
+       MainWindow::translate(vec2);
+    }
     ui->submitBtn->setEnabled(false);
     ui->comboBox->clear();
     ui->comboBox->setEnabled(false);
+    graph.resetgraph(9);
+
+
+
 }
