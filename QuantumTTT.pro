@@ -16,6 +16,8 @@ SOURCES += main.cpp\
         mainwindow.cpp
 
 HEADERS  += mainwindow.h \
-    quantumgraph.h
+    quantumgraph.h \
+    square.h \
+    classical_board.h
 
 FORMS    += mainwindow.ui

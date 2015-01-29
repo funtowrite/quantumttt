@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "quantumgraph.h"
+#include "classical_board.h"
 #include <string>
 #include <sstream>>
 #include <vector>
@@ -11,6 +12,7 @@ static int turn =0;
 static vector<int> chosen;
 //static vector<Ui*> boxes;
 QGraph graph(9);
+Board board(9);
 
 MainWindow::MainWindow(QWidget *parent) :
 //    board = new ClassicalBoard;
@@ -94,6 +96,18 @@ void MainWindow::markClassical(string n, int k){
     }
 }
 
+void MainWindow::translate(vector<int> moves){
+    for (int i = 0; i < moves.size(); i++){
+        if (moves[i] == 1){
+            MainWindow::markClassical("X", i+1);
+        }
+        else if (moves[i] == 2){
+            MainWindow::markClassical("O", i+1);
+        }
+
+    }
+}
+
 void MainWindow::mark( int i){
     switch(i){
         case 1:
@@ -140,13 +154,25 @@ void MainWindow::mark( int i){
             MainWindow::enable(chosen[0], true);
             MainWindow::enable(chosen[1], true);
             chosen.clear();
-            if (turn > 1){
+            if (turn > 0){
                 if (graph.isCyclic()){
-                ui->comboBox->addItem("item " + QString::number(i));
+                        ui->comboBox->addItem("item " + QString::number(i));
                 }
             }
     }
 
+   /* vector<int> moves;
+    moves.push_back(1);
+    moves.push_back(2);
+    moves.push_back(0);
+    moves.push_back(1);
+    moves.push_back(2);
+    moves.push_back(0);
+    moves.push_back(1);
+    moves.push_back(2);
+    moves.push_back(0);
+
+    MainWindow::translate(moves);*/
     //if cycle is detected: populate the dropdown, disable all buttons, enable the submitbutton
 
 }

@@ -18,6 +18,7 @@ public:
     void mark(int i);
     void trial();
     void markClassical(std::string n, int k);
+    void translate(std::vector<int>);
 
 
 private slots:
