@@ -80,14 +80,14 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
             twooptions[o][w] = 0;
         }
     }
-        cout<<"line 75"<<endl;
+        cout<<"line 83"<<endl;
     int nextnode;
     list <int>::iterator it;
     it=nodelist.begin();
     //iterate thorugh all nodes in the nodelist
     for (int k=0; k<nodelist.size(); k++)
     {
-        cout<<"line 79"<<endl;
+        cout<<"line 90"<<endl;
         int currentnode= *it;
         qDebug()<<"the iterator is pointing at"<<*it<<endl;
         qDebug()<<"k is"<<k<<endl;
@@ -103,8 +103,17 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
             nextnode=*it;
         }
         int startfromhere=findstartingelem(currentnode, nextnode);
+
+        qDebug()<<"qstatus is"<<endl;
+        for (int o=0; o<9; o++){
+            for(int w=0; w<9; w++){
+                qDebug()<< qstatus[o][w];
+            }
+            qDebug()<<endl;
+        }
+
         qDebug()<<"currentnode is "<<currentnode<<endl;
-            qDebug()<<"nextnode is "<<nextnode<< " startfrom here"<<startfromhere << "###### "<<qstatus[currentnode][startfromhere]<< " &&&&&&&" << qstatus[currentnode][startfromhere]<< endl;
+            qDebug()<<"nextnode is "<<nextnode<< " startfrom here"<<startfromhere << "Will print the following symbol "<<qstatus[currentnode][startfromhere]<< " &&&&&&&" << qstatus[currentnode][startfromhere]<< endl;
         twooptions[0][currentnode]=qstatus[currentnode][startfromhere];
         twooptions[1][nextnode]=qstatus[currentnode][startfromhere];
         cout<<"after currentnode is "<<currentnode<<endl;

@@ -162,6 +162,8 @@ void MainWindow::translate(vector<int> moves){
     QString o = QString::fromStdString("O");
     int p1 = MainWindow::num_wins(moves, x);
     int p2 = MainWindow::num_wins(moves, o);
+    ui->p1score->setText(QString::number(p1));
+    ui->p2score->setText(QString::number(p2));
     qDebug()<<"Player 1 Score: "<<p1;
     qDebug()<<"Player 2 Score: "<<p2;
 }
@@ -400,10 +402,14 @@ void MainWindow::on_submitBtn_clicked()
     int selected = ui->comboBox->currentIndex();
     vector<int> vec1;
     vector<int> vec2;
+
+    //superqboard_status = game.player_chooses_collapse(graph.nodelist);
+
+    qDebug()<<"First option"<<endl;
     for(int u= 0 ;  u < 9; u++){
         vec1.push_back(superqboard[0][u]);
-    }
-
+        MainWindow::enable(u+1, true);
+        qDebug()<<superqboard[0][u]<<endl;
     for(int u= 0 ;  u < 9; u++){
 
         if (superqboard[0][u] == 0 && !blackout[u]){
