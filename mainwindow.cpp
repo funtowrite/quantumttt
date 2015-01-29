@@ -332,7 +332,7 @@ void MainWindow::collapseCycle(){
     superqboard = game.player_chooses_collapse(graph.nodelist);
     for(int u= 0 ;  u < 9; u++){
         cout << "matching" <<superqboard[0][u] <<"   "<< u<<"   "<< superqboard[1][u]<<endl;
-        if (superqboard[0][u] !=superqboard[1][u]){
+        if (superqboard[0][u] !=0 && superqboard[1][u] != 0){
             squareToChoose = u;
             break;
         }
@@ -352,14 +352,11 @@ void MainWindow::collapseCycle(){
 void MainWindow::on_quantum1_clicked()
 {
     MainWindow::mark(1);
-//    ui->quantum1->setFont(QFont ("Arial", 100));
 }
 
 void MainWindow::on_quantum2_clicked()
 {
     MainWindow::mark(2);
-//    ui->quantum2->setFont(QFont ("Arial", 100));
-
 }
 
 void MainWindow::on_quantum3_clicked()
@@ -421,7 +418,6 @@ void MainWindow::on_submitBtn_clicked()
         vec2.push_back(superqboard[1][u]);
     }
     if (selected == first-1){
-       //std::copy_n(superqboard_status[0], 9, buf);
         MainWindow::translate(vec1);
 
     }
@@ -432,7 +428,4 @@ void MainWindow::on_submitBtn_clicked()
     ui->comboBox->clear();
     ui->comboBox->setEnabled(false);
     graph.resetgraph(9);
-
-
-
 }
