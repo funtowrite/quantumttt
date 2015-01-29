@@ -33,6 +33,7 @@ private slots:
     void on_quantum9_clicked();
     void enable(int j, bool enabled);
     void on_submitBtn_clicked();
+    void collapseCycle();
 
 private:
     Ui::MainWindow *ui;

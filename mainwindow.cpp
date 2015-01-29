@@ -6,8 +6,9 @@
 #include <sstream>>
 #include <vector>
 #include <QDebug>
+#include <sstream>
 using namespace std;
-static int player = 0;
+static int player = 1;
 static int turn =0;
 static vector<int> chosen;
 //static vector<Ui*> boxes;
@@ -15,7 +16,6 @@ QGraph graph(9);
 Board board(9);
 
 MainWindow::MainWindow(QWidget *parent) :
-//    board = new ClassicalBoard;
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
@@ -27,6 +27,8 @@ MainWindow::~MainWindow()
 {
 //    delete graph;
     delete ui;
+    chosen.clear();
+
 }
 
 void MainWindow::enable(int j, bool enabled){
@@ -148,17 +150,21 @@ void MainWindow::mark( int i){
 
     //if two squares have been selected: reset count and change players
     if (chosen.size() == 2){
-        player = 1 - player;
+        player = 3 - player;
+        ui->player->setText(QString::number(player));
         turn += 1;
         graph.addEdge(chosen[0]-1, chosen[1]-1);
             MainWindow::enable(chosen[0], true);
             MainWindow::enable(chosen[1], true);
-            chosen.clear();
-            if (turn > 0){
-                if (graph.isCyclic()){
-                        ui->comboBox->addItem("item " + QString::number(i));
+            chosen.clear();        
+            if (graph.isCyclic()){
+                for (int y=1; y<10; y++){
+                    MainWindow::enable(y, false);
                 }
+                MainWindow::collapseCycle();
             }
+//                ui->comboBox->addItem("item " + QString::number(i));
+
     }
 
    /* vector<int> moves;
@@ -175,6 +181,13 @@ void MainWindow::mark( int i){
     MainWindow::translate(moves);*/
     //if cycle is detected: populate the dropdown, disable all buttons, enable the submitbutton
 
+}
+
+void MainWindow::collapseCycle(){
+    //getfromcycle the two ways to collapse
+    //iterate through the two lists until they are not the same
+    //call enable that box, let the user choose who is and submit
+    //pass chosen list to
 }
 
 void MainWindow::on_quantum1_clicked()
