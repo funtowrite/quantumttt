@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <vector>
 #include "quantumgraph.h"
+#include <stdio.h>
 
 using namespace std;
 
@@ -21,14 +22,16 @@ typedef array<int[9], 2> superqboard_status;
 class tictactoe_game //controls the game
 {
 public:
+    tictactoe_game();
     qboard_status qstatus; // initalizes the array that records the status of the quantum board
     superqboard_status player_chooses_collapse(list<int> list);//
-    int findstartingelem(int, int);
-    void update(int[3], tictactoe_player, QGraph);
-    void start(tictactoe_player);
+
+    void start(tictactoe_player const player);
+    void update(int[3] , int, QGraph );
+    int findstartingelem(int i, int nextnode);
 };
 
-//tictactoe_game::tictactoe_game(void);
+tictactoe_game::tictactoe_game(void){};
 
 void tictactoe_game::start(tictactoe_player const player)
 {
@@ -39,7 +42,6 @@ void tictactoe_game::start(tictactoe_player const player)
             qstatus[j][k]=0; // assign 0 to each cell (means no one has made a move)
         }
     }
-    bool playing = true;
 }
 
 struct tictactoe_cell //indexes each vector representing a cell by its row and column
@@ -57,7 +59,7 @@ struct tictactoe_cell //indexes each vector representing a cell by its row and c
     }
 };
 
-void tictactoe_game::update(int getplayermove[3], tictactoe_player player, QGraph qgraph)
+void tictactoe_game::update(int getplayermove[3], int player, QGraph qgraph)
 {
     int cell1=getplayermove[1];
     int cell2=getplayermove[2];
@@ -66,26 +68,44 @@ void tictactoe_game::update(int getplayermove[3], tictactoe_player player, QGrap
     qstatus[cell2][turnnumber] = player;
 }
 
-superqboard_status tictactoe_game::player_chooses_collapse(list<int> list)
+superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
 {
     //This function generates two options for how to collapse the quantum board
     superqboard_status twooptions;
 
-    for (int k=1; k<list.size(); k++){
-        int i=list(k);
-        if (k<list.size()-1)
+    int nextnode;
+    for (int k=0; k<nodelist.size(); k++)
+    {
+        list <int>::iterator it;
+        it=nodelist.begin();
+        int currentnode=*it;
+        if (k<nodelist.size()-1)
         {
-            nextnode=list[i+1];
+            advance(it,1);
+            nextnode=*it;
         }
-        else if (k==list.size()-1)
+        else if (k==nodelist.size()-1)
         {
-            nextnode=list[1];
+            it=nodelist.begin();
+            nextnode=*it;
         }
-        int startfromhere=findstartingelem(i, nextnode);
-        twooptions[1][i]=qstatus[i][startfromhere];
-        twooptions[2][nextnode]=qstatus[i][startfromhere];
+        int startfromhere=findstartingelem(currentnode, nextnode);
+        twooptions[1][currentnode]=qstatus[currentnode][startfromhere];
+        twooptions[2][nextnode]=qstatus[currentnode][startfromhere];
     }
-    memset(qstatus, 0, sizeof(qstatus[0][0]) * 9 * 9);
+
+    for(int i = 0; i < 9; i++)
+    {
+        for(int j = 0; j < 9; j++)
+        {
+            qstatus[i][j] = 0;
+        }
+    }
+    //qstatus.fill(0);
+//    for (int p=0; p<9; p++){
+//        qstatus[p].fill(0);
+//    }
+//    memset(qstatus, 0, sizeof(qstatus[0][0]) * 9 * 9);
     return twooptions;
 }
 
