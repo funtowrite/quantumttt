@@ -31,7 +31,7 @@ public:
     int findstartingelem(int i, int nextnode);
 };
 
-tictactoe_game::tictactoe_game(void){};
+tictactoe_game::tictactoe_game(){};
 
 void tictactoe_game::start(tictactoe_player const player)
 {
