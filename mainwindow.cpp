@@ -14,18 +14,19 @@ static vector<int> chosen;
 //static vector<Ui*> boxes;
 QGraph graph(9);
 Board board(9);
+//tictactoe_game game();
+//typedef array<int[9], 2> superqboard_status;
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    boxes={ui->quantum1, ui->quantum2};
 }
 
 MainWindow::~MainWindow()
 {
-//    delete graph;
     delete ui;
     chosen.clear();
 
@@ -61,6 +62,39 @@ void MainWindow::enable(int j, bool enabled){
             ui->quantum9->setEnabled(enabled);
             break;
         default:
+            break;
+    }
+}
+
+void MainWindow::markQuantum(string n, int k){
+    QString m = QString::fromStdString(n);
+    switch(k){
+        case 1:
+            ui->quantum1->setText(m);
+            break;
+        case 2:
+            ui->quantum2->setText(m);
+            break;
+        case 3:
+            ui->quantum3->setText(m);
+            break;
+        case 4:
+            ui->quantum4->setText(m);
+            break;
+        case 5:
+            ui->quantum5->setText(m);
+            break;
+        case 6:
+            ui->quantum6->setText(m);
+            break;
+        case 7:
+            ui->quantum7->setText(m);
+            break;
+        case 8:
+            ui->quantum8->setText(m);
+            break;
+        case 9:
+            ui->quantum9->setText(m);
             break;
     }
 }
@@ -139,7 +173,6 @@ void MainWindow::mark( int i){
             break;
         case 9:
             ui->quantum9->setText("9");
-//            ui->comboBox->removeItem(0);
             break;
         default:
             break;
@@ -154,15 +187,17 @@ void MainWindow::mark( int i){
         ui->player->setText(QString::number(player));
         turn += 1;
         graph.addEdge(chosen[0]-1, chosen[1]-1);
-            MainWindow::enable(chosen[0], true);
-            MainWindow::enable(chosen[1], true);
-            chosen.clear();        
-            if (graph.isCyclic()){
-                for (int y=1; y<10; y++){
-                    MainWindow::enable(y, false);
-                }
-                MainWindow::collapseCycle();
+        MainWindow::enable(chosen[0], true);
+        MainWindow::enable(chosen[1], true);
+        chosen.push_back(turn);
+//        game.update(chosen); //takes in a vector??
+        chosen.clear();
+        if (graph.isCyclic()){
+            for (int y=1; y<10; y++){
+                MainWindow::enable(y, false);
             }
+            MainWindow::collapseCycle();
+        }
 //                ui->comboBox->addItem("item " + QString::number(i));
 
     }
@@ -184,10 +219,27 @@ void MainWindow::mark( int i){
 }
 
 void MainWindow::collapseCycle(){
+    //enable dropdown and submit button
     //getfromcycle the two ways to collapse
     //iterate through the two lists until they are not the same
     //call enable that box, let the user choose who is and submit
     //pass chosen list to
+    //re-enable all squares that are left
+    superqboard_status = game.player_chooses_collapse();
+    int squareToChoose;
+    for(int u= 0 ;  u < 9; u++){
+        if (superqboard_status[u][0] !=superqboard_status[u][1]){
+            squareToChoose = u;
+            break;
+        }
+    }
+    MainWindow::markQuantum("Choose a\nmark for\nthis board", squareToChoose);
+    ui->comboBox->addItem("X");
+    ui->comboBox->addItem("O");
+    ui->comboBox->setEnabled(true);
+    ui->submitBtn->setEnabled(true);
+//    graph.reset_graph();
+
 }
 
 void MainWindow::on_quantum1_clicked()
@@ -239,12 +291,10 @@ void MainWindow::on_quantum9_clicked()
 }
 
 //will only be clicked when collapsing squares
-//onclick: disable button, change classical board text, disable quantum board squares
+//onclick: disable button and clear and disable dropdown, change classical board text, disable quantum board squares
 void MainWindow::on_submitBtn_clicked()
 {
-//    ui->submitBtn->setEnabled(false);
+    ui->submitBtn->setEnabled(false);
+    ui->comboBox->clear();
+    ui->comboBox->setEnabled(false);
 }
-
-//class ClassicalBoard{
-
-//};
