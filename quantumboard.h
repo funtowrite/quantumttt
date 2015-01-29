@@ -75,22 +75,27 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
 {
     //This function generates two options for how to collapse the quantum board
     superqboard_status twooptions;
+    for (int o=0; o<2; o++){
+        for(int w=0; w<9; w++){
+            twooptions[o][w] = 0;
+        }
+    }
         cout<<"line 75"<<endl;
     int nextnode;
     list <int>::iterator it;
     it=nodelist.begin();
-
+    //iterate thorugh all nodes in the nodelist
     for (int k=0; k<nodelist.size(); k++)
     {
         cout<<"line 79"<<endl;
-        int currentnode=*it;
-        cout<<"the iterator is pointing at"<<*it<<endl;
-        cout<<"k is"<<k<<endl;
+        int currentnode= *it;
+        qDebug()<<"the iterator is pointing at"<<*it<<endl;
+        qDebug()<<"k is"<<k<<endl;
         if (k<nodelist.size()-1)
         {
             advance(it,1);
             nextnode=*it;
-            cout<<"line 87, next node is"<<nextnode<<endl;
+            qDebug()<<"line 87, next node is"<<nextnode<<endl;
         }
         else if (k==nodelist.size()-1)
         {
@@ -98,13 +103,14 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
             nextnode=*it;
         }
         int startfromhere=findstartingelem(currentnode, nextnode);
-        cout<<"currentnode is "<<currentnode<<endl;
-            cout<<"nextnode is "<<nextnode<<endl;
+        qDebug()<<"currentnode is "<<currentnode<<endl;
+            qDebug()<<"nextnode is "<<nextnode<< " startfrom here"<<startfromhere << "###### "<<qstatus[currentnode][startfromhere]<< " &&&&&&&" << qstatus[currentnode][startfromhere]<< endl;
         twooptions[0][currentnode]=qstatus[currentnode][startfromhere];
         twooptions[1][nextnode]=qstatus[currentnode][startfromhere];
         cout<<"after currentnode is "<<currentnode<<endl;
             cout<<"after nextnode is "<<nextnode<<endl;
     }
+
 
     for(int i = 0; i < 9; i++)
     {
@@ -118,15 +124,17 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
 //        qstatus[p].fill(0);
 //    }
 //    memset(qstatus, 0, sizeof(qstatus[0][0]) * 9 * 9);
+
     return twooptions;
 }
 
 int tictactoe_game::findstartingelem(int i, int nextnode)
 {
     int startfromhere;
+    //for each box, find the element that is not None,
     for (int j=0; j<9; ++j)
     {
-        if (qstatus[i][j]!=0 && qstatus[nextnode][j]==qstatus[i][j])
+        if (qstatus[i][j]!=0 && (qstatus[nextnode][j]==qstatus[i][j]))
         {
             startfromhere=j;
         }

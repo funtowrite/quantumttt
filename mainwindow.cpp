@@ -334,6 +334,7 @@ void MainWindow::collapseCycle(){
 
     superqboard = game.player_chooses_collapse(graph.nodelist);
     for(int u= 0 ;  u < 9; u++){
+        cout << "matching" <<superqboard[0][u] <<"   "<< u<<"   "<< superqboard[1][u]<<endl;
         if (superqboard[0][u] !=superqboard[1][u]){
             squareToChoose = u;
             break;
@@ -418,13 +419,13 @@ void MainWindow::on_submitBtn_clicked()
         if(superqboard[0][u]!=0){
             MainWindow::enable(u+1, false);
         }
-//        if (superqboard[0][u] == 0){
-//            qDebug()<< "its *** "<< u;
-//            MainWindow::enable(u+1, true);
-//        }
-//        else{
-//            MainWindow::markQuantum("cleared", u+1);
-//        }
+        if (superqboard[0][u] == 0){
+            qDebug()<< "its *** "<< u;
+            MainWindow::enable(u+1, true);
+        }
+        else{
+            MainWindow::markQuantum("cleared", u+1);
+        }
         vec2.push_back(superqboard[1][u]);
     }
     if (selected == first-1){

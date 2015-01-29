@@ -3,7 +3,7 @@
 #include <list>
 #include <limits.h>
 #include <algorithm>
-
+#include <QDebug>
 using namespace std;
 
 class QGraph
