@@ -16,8 +16,9 @@ static vector<int> chosen;
 //static vector<Ui*> boxes;
 QGraph graph(9);
 Board board(3);
-tictactoe_game game();
-//typedef array<int[9], 2> superqboard_status;
+tictactoe_game game;
+
+typedef array<int[9], 2> superqboard_status;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -236,7 +237,12 @@ void MainWindow::mark( int i){
         MainWindow::enable(chosen[0], true);
         MainWindow::enable(chosen[1], true);
         chosen.push_back(turn);
-//        game.update(chosen); //takes in a vector??
+//        int th[3] = {chosen[0], chosen[1], chosen[2]};
+        int th[3];
+        th[0] = chosen[0];
+        th[1] = chosen[1];
+        th[2] = chosen[2];
+        game.update(th, player, graph ); //takes in a vector??
         chosen.clear();
         if (graph.isCyclic()){
             for (int y=1; y<10; y++){
