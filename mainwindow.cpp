@@ -157,6 +157,52 @@ void MainWindow::translate(vector<int> moves){
         }
 
     }
+    QString x = QString::fromStdString("X");
+    QString o = QString::fromStdString("O");
+    int p1 = MainWindow::num_wins(moves, x);
+    int p2 = MainWindow::num_wins(moves, o);
+    qDebug()<<"Player 1 Score: "<<p1;
+    qDebug()<<"Player 2 Score: "<<p2;
+}
+
+int MainWindow::num_wins(vector<int> moves, QString c){
+    int wins = 0;
+    QString val0 = ui->classical1->text();
+    QString val1 = ui->classical2->text();
+    QString val2 = ui->classical3->text();
+    QString val3 = ui->classical4->text();
+    QString val4 = ui->classical5->text();
+    QString val5 = ui->classical6->text();
+    QString val6 = ui->classical7->text();
+    QString val7 = ui->classical8->text();
+    QString val8 = ui->classical9->text();
+    qDebug()<<val0<<val1<<val2<<val3<<val4<<val5<<val6<<val7<<val8;
+
+    if (val0 == val1 && val1 == val2 && val0 == c){
+        wins++;
+    }
+    if (val3 == val4 && val4 == val5 && val3 == c){
+        wins++;
+    }
+    if (val6 == val7 && val7 == val8 && val6 == c){
+        wins++;
+    }
+    if (val0 == val3 && val3 == val6 && val0 == c){
+        wins++;
+    }
+    if (val1 == val4 && val4 == val7 && val1 == c){
+        wins++;
+    }
+    if (val2 == val5 && val5 == val8 && val2 == c){
+        wins++;
+    }
+    if (val0 == val4 && val4 == val8 && val0 == c){
+        wins++;
+    }
+    if (val2 == val4 && val4 == val6 && val2 == c){
+        wins++;
+    }
+    return wins;
 }
 
 void MainWindow::mark( int i){
@@ -365,14 +411,20 @@ void MainWindow::on_submitBtn_clicked()
     //superqboard_status = game.player_chooses_collapse(graph.nodelist);
     for(int u= 0 ;  u < 9; u++){
         vec1.push_back(superqboard[0][u]);
+        MainWindow::enable(u+1, true);
     }
 
     for(int u= 0 ;  u < 9; u++){
-
-        if (superqboard[0][u] == 0){
-            cout<< "its *** "<< u;
-            MainWindow::enable(u+1, true);
+        if(superqboard[0][u]!=0){
+            MainWindow::enable(u+1, false);
         }
+//        if (superqboard[0][u] == 0){
+//            qDebug()<< "its *** "<< u;
+//            MainWindow::enable(u+1, true);
+//        }
+//        else{
+//            MainWindow::markQuantum("cleared", u+1);
+//        }
         vec2.push_back(superqboard[1][u]);
     }
     if (selected == first-1){

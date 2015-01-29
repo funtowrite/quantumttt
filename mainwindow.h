@@ -19,6 +19,7 @@ public:
     void mark(int i);
     void trial();
     void markClassical(std::string n, int k);
+    int num_wins(std::vector<int>, QString);
     void translate(std::vector<int>);
     void markQuantum(std::string n, int k);
 
