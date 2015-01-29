@@ -22,6 +22,7 @@ static int first;
 static int second;
 int squareToChoose;
 array<int[9], 2> superqboard;
+bool blackout[9] = { false };
 //typedef array<int[9], 2> superqboard_status;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -304,8 +305,6 @@ void MainWindow::mark( int i){
             }
             MainWindow::collapseCycle();
         }
-//                ui->comboBox->addItem("item " + QString::number(i));
-
     }
 
    /* vector<int> moves;
@@ -400,15 +399,13 @@ void MainWindow::on_quantum9_clicked()
      MainWindow::mark(9);
 }
 
-//will only be clicked when collapsing squares
-//onclick: disable button and clear and disable dropdown, change classical board text, disable quantum board squares
+
 void MainWindow::on_submitBtn_clicked()
 {
-   //cout << ui->comboBox->itemData(ui->comboBox->currentIndex())<<endl;
     int selected = ui->comboBox->currentIndex();
-    //    graph.reset_graph();
     vector<int> vec1;
     vector<int> vec2;
+
     //superqboard_status = game.player_chooses_collapse(graph.nodelist);
 
     qDebug()<<"First option"<<endl;
@@ -416,18 +413,16 @@ void MainWindow::on_submitBtn_clicked()
         vec1.push_back(superqboard[0][u]);
         MainWindow::enable(u+1, true);
         qDebug()<<superqboard[0][u]<<endl;
-    }
-
     for(int u= 0 ;  u < 9; u++){
-        if(superqboard[0][u]!=0){
-            MainWindow::enable(u+1, false);
-        }
-        if (superqboard[0][u] == 0){
+
+        if (superqboard[0][u] == 0 && !blackout[u]){
             qDebug()<< "its *** "<< u;
             MainWindow::enable(u+1, true);
         }
         else{
-            MainWindow::markQuantum("cleared", u+1);
+            MainWindow::markQuantum(" ", u+1);
+            blackout[u] = true;
+            MainWindow::enable(u+1, false);
         }
         vec2.push_back(superqboard[1][u]);
     }
