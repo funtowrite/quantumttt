@@ -410,9 +410,12 @@ void MainWindow::on_submitBtn_clicked()
     vector<int> vec1;
     vector<int> vec2;
     //superqboard_status = game.player_chooses_collapse(graph.nodelist);
+
+    qDebug()<<"First option"<<endl;
     for(int u= 0 ;  u < 9; u++){
         vec1.push_back(superqboard[0][u]);
         MainWindow::enable(u+1, true);
+        qDebug()<<superqboard[0][u]<<endl;
     }
 
     for(int u= 0 ;  u < 9; u++){
