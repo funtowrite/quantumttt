@@ -238,8 +238,8 @@ void MainWindow::mark( int i){
         chosen.push_back(turn);
 
         int chose[3];
-        chose[0] = chosen[0];
-        chose[1] = chosen[1];
+        chose[0] = chosen[0]-1;
+        chose[1] = chosen[1]-1;
         chose[2] = chosen[2];
 
         game.update(chose, player, graph); //takes in a vector??
@@ -277,7 +277,8 @@ void MainWindow::collapseCycle(){
     //call enable that box, let the user choose who is and submit
     //pass chosen list to
     //re-enable all squares that are left
-//    superqboard_status = game.player_chooses_collapse();
+    array<int[9], 2> superqboard_status;
+    superqboard_status = game.player_chooses_collapse(graph.nodelist);
 //    int squareToChoose;
 //    for(int u= 0 ;  u < 9; u++){
 //        if (superqboard_status[u][0] !=superqboard_status[u][1]){
