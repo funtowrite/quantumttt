@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "quantumgraph.h"
+//#include "quantumgraph.h"
 #include "classical_board.h"
+#include "quantumboard.h"
 #include <string>
 #include <sstream>
 #include <vector>
@@ -15,7 +16,7 @@ static vector<int> chosen;
 //static vector<Ui*> boxes;
 QGraph graph(9);
 Board board(3);
-//tictactoe_game game();
+tictactoe_game game();
 //typedef array<int[9], 2> superqboard_status;
 
 MainWindow::MainWindow(QWidget *parent) :
