@@ -72,20 +72,5 @@ int Board::num_wins(char c){
 	if (val2 == val4 && val4 == val6 && val2 == c){
 		wins++;
 	}
-
 	return wins;
-
 }
-
-/*int main()
-{
-	Board b(9);
-
-	b.add("X1", 0);
-	b.add("X2", 4);
-	b.add("X4", 8);
-
-	cout << b.num_wins('O');
-
-    return 0;
-}*/

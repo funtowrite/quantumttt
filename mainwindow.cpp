@@ -6,7 +6,6 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include <QDebug>
 #include <sstream>
 #include <algorithm>
 
@@ -14,7 +13,6 @@ using namespace std;
 static int player = 1;
 static int turn =0;
 static vector<int> chosen;
-//static vector<Ui*> boxes;
 QGraph graph(9);
 Board board(3);
 tictactoe_game game;
@@ -23,7 +21,6 @@ static int second;
 int squareToChoose;
 array<int[9], 2> superqboard;
 bool blackout[9] = { false };
-//typedef array<int[9], 2> superqboard_status;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -36,7 +33,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
     chosen.clear();
-
 }
 
 void MainWindow::enable(int j, bool enabled){
@@ -164,8 +160,6 @@ void MainWindow::translate(vector<int> moves){
     int p2 = MainWindow::num_wins(moves, o);
     ui->p1score->setText(QString::number(p1));
     ui->p2score->setText(QString::number(p2));
-    qDebug()<<"Player 1 Score: "<<p1;
-    qDebug()<<"Player 2 Score: "<<p2;
 }
 
 int MainWindow::num_wins(vector<int> moves, QString c){
@@ -179,7 +173,6 @@ int MainWindow::num_wins(vector<int> moves, QString c){
     QString val6 = ui->classical7->text();
     QString val7 = ui->classical8->text();
     QString val8 = ui->classical9->text();
-    qDebug()<<val0<<val1<<val2<<val3<<val4<<val5<<val6<<val7<<val8;
 
     if (val0 == val1 && val1 == val2 && val0 == c){
         wins++;
@@ -216,17 +209,15 @@ void MainWindow::mark( int i){
     else {
         symbol = "O";
     }
-    //symbol += QString::number(turn);
     stringstream ss;
     ss << turn;
     string str = ss.str();
 
     symbol += str;
-    QString symbol2;// = QString::fromStdString(symbol);
+    QString symbol2;
     switch(i){
         case 1:
             board.add(symbol, 0);
-            //s = board.get_squares()[0];
             symbol2 = QString::fromStdString(board.get_squares()[0].format_string());
             ui->quantum1->setText(symbol2);
             break;
@@ -271,22 +262,17 @@ void MainWindow::mark( int i){
             board.add(symbol, 8);
             symbol2 = QString::fromStdString(board.get_squares()[8].format_string());
             ui->quantum9->setText(symbol2);
-//            ui->comboBox->removeItem(0);
-
             break;
         default:
             break;
     }
-
     chosen.push_back(i);
     MainWindow::enable(i, false);
 
     //if two squares have been selected: reset count and change players
     if (chosen.size() == 2){
-        cout<<"line 232 of main"<<endl;
-        player = 3 - player;
         ui->player->setText(QString::number(player));
-        turn += 1;
+
         graph.addEdge(chosen[0]-1, chosen[1]-1);
         MainWindow::enable(chosen[0], true);
         MainWindow::enable(chosen[1], true);
@@ -296,8 +282,9 @@ void MainWindow::mark( int i){
         chose[0] = chosen[0]-1;
         chose[1] = chosen[1]-1;
         chose[2] = chosen[2];
-        cout<<"calling update"<<endl;
-        game.update(chose, player, graph); //takes in a vector??
+        game.update(chose, player, graph);
+         turn += 1;
+        player = 3 - player;
         chosen.clear();
         if (graph.isCyclic()){
             for (int y=1; y<10; y++){
@@ -306,49 +293,23 @@ void MainWindow::mark( int i){
             MainWindow::collapseCycle();
         }
     }
-
-   /* vector<int> moves;
-    moves.push_back(1);
-    moves.push_back(2);
-    moves.push_back(0);
-    moves.push_back(1);
-    moves.push_back(2);
-    moves.push_back(0);
-    moves.push_back(1);
-    moves.push_back(2);
-    moves.push_back(0);
-
-    MainWindow::translate(moves);*/
-    //if cycle is detected: populate the dropdown, disable all buttons, enable the submitbutton
-
 }
 
 void MainWindow::collapseCycle(){
-    //enable dropdown and submit button
-    //getfromcycle the two ways to collapse
-    //iterate through the two lists until they are not the same
-    //call enable that box, let the user choose who is and submit
-    //pass chosen list to
-    //re-enable all squares that are left
-
     superqboard = game.player_chooses_collapse(graph.nodelist);
     for(int u= 0 ;  u < 9; u++){
-        cout << "matching" <<superqboard[0][u] <<"   "<< u<<"   "<< superqboard[1][u]<<endl;
-        if (superqboard[0][u] !=0 && superqboard[1][u] != 0){
+        if (superqboard[0][u] != superqboard[1][u]){
             squareToChoose = u;
             break;
         }
     }
     first = superqboard[0][squareToChoose];
     second = superqboard[1][squareToChoose];
-    cout<<"square to choose"<<squareToChoose<<endl;
     MainWindow::markQuantum("Choose a\nmark for\nthis board", squareToChoose+1);
     ui->comboBox->addItem("X");
     ui->comboBox->addItem("O");
     ui->comboBox->setEnabled(true);
     ui->submitBtn->setEnabled(true);
-
-
 }
 
 void MainWindow::on_quantum1_clicked()
@@ -403,18 +364,15 @@ void MainWindow::on_submitBtn_clicked()
     vector<int> vec1;
     vector<int> vec2;
 
-    //superqboard_status = game.player_chooses_collapse(graph.nodelist);
-
-    qDebug()<<"First option"<<endl;
     for(int u= 0 ;  u < 9; u++){
         vec1.push_back(superqboard[0][u]);
         MainWindow::enable(u+1, true);
-        qDebug()<<superqboard[0][u]<<endl;
+    }
     for(int u= 0 ;  u < 9; u++){
 
         if (superqboard[0][u] == 0 && !blackout[u]){
-            qDebug()<< "its *** "<< u;
             MainWindow::enable(u+1, true);
+            MainWindow::markQuantum(" ", u+1);
         }
         else{
             MainWindow::markQuantum(" ", u+1);

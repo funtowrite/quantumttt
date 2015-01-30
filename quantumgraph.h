@@ -3,7 +3,7 @@
 #include <list>
 #include <limits.h>
 #include <algorithm>
-#include <QDebug>
+
 using namespace std;
 
 class QGraph
@@ -49,7 +49,6 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
         visited[currentnode] = true;
         recStack[currentnode] = true;
         nodelist.push_back(currentnode);
-        cout<<currentnode<<" has been added to nodelist"<<endl;
 
         // Recur for all the vertices adjacent to this vertex
         list<int>::iterator i;
@@ -62,9 +61,7 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
             }
             else if ((recStack[*i]) && *i!=parentnode)
             {
-                cout<<"Node "<<*i<<" found on recStack"<<endl;
                 keynode = *i;
-                cout<<"current node is "<<currentnode<<endl;
                 return true;
             }
             else if ((*i==parentnode) && adj[currentnode].size()>1) //attempt to find two copies of parentnode in the adjacency list of currentnode
@@ -85,17 +82,14 @@ bool QGraph::detectCycle(int currentnode, int parentnode, bool visited[], bool *
                         keynode = *i;
                         return true;
                     }
-
                 }
             }
-
         }
     }
     recStack[currentnode] = false;  // remove the vertex from recursion stack
        if (!nodelist.empty()){
             nodelist.pop_back();
     }
-    cout<<currentnode<<" has been removed from nodelist"<<endl;
     return false;
 }
 
@@ -118,15 +112,6 @@ bool QGraph::isCyclic()
 
     for(int i = 0; i < V; i++) //Examines all the nodes of the graph.
     {
-        list<int>::iterator it;
-        cout<<"Adjacency list for node "<<i<< " is "<< endl;
-        for (it= adj[i].begin(); it != adj[i].end(); ++it)
-        {
-            cout<< *it <<endl;
-        }
-    }
-    for(int i = 0; i < V; i++) //Examines all the nodes of the graph.
-    {
         if (detectCycle(i, i, visited, recStack))
         {
         list<int>::iterator p;
@@ -141,23 +126,3 @@ bool QGraph::isCyclic()
     }
     return false;
 }
-
-//int main()
-//{
-//    // Create a graph
-//    QGraph g(3);
-//    g.addEdge(0, 1);
-//   // g.addEdge(1, 2);
-//    //g.addEdge(2, 0);
-
-//    if(g.isCyclic())
-//    {
-//        cout << "Cyclic entanglement detected!! Choose one way to collapse!";
-//    }
-//    else
-//    {
-//        cout << "No cycles at the moment.";
-//    }
-
-//    return 0;
-//}

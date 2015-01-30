@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>799</width>
+    <width>845</width>
     <height>786</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
       <x>660</x>
       <y>310</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -39,7 +39,7 @@
       <x>660</x>
       <y>410</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -55,7 +55,7 @@
       <x>660</x>
       <y>510</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -71,7 +71,7 @@
       <x>560</x>
       <y>410</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -87,7 +87,7 @@
       <x>560</x>
       <y>510</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -116,10 +116,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>460</x>
       <y>410</y>
-      <width>111</width>
-      <height>111</height>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -132,10 +132,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>460</x>
       <y>510</y>
-      <width>111</width>
-      <height>111</height>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -148,9 +148,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>460</x>
       <y>310</y>
-      <width>111</width>
+      <width>101</width>
       <height>101</height>
      </rect>
     </property>
@@ -161,10 +161,10 @@
    <widget class="QPushButton" name="quantum2">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>150</x>
       <y>310</y>
-      <width>111</width>
-      <height>111</height>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -177,7 +177,7 @@
       <x>150</x>
       <y>410</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -190,7 +190,7 @@
       <x>150</x>
       <y>510</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -200,10 +200,10 @@
    <widget class="QPushButton" name="quantum4">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>50</x>
       <y>410</y>
-      <width>111</width>
-      <height>111</height>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -213,10 +213,10 @@
    <widget class="QPushButton" name="quantum7">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>50</x>
       <y>510</y>
-      <width>111</width>
-      <height>111</height>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -226,9 +226,9 @@
    <widget class="QPushButton" name="quantum1">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>50</x>
       <y>310</y>
-      <width>111</width>
+      <width>101</width>
       <height>101</height>
      </rect>
     </property>
@@ -245,8 +245,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>690</y>
+      <x>250</x>
+      <y>680</y>
       <width>114</width>
       <height>32</height>
      </rect>
@@ -267,8 +267,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>650</y>
+      <x>50</x>
+      <y>640</y>
       <width>311</width>
       <height>26</height>
      </rect>
@@ -280,7 +280,7 @@
       <x>250</x>
       <y>410</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -293,7 +293,7 @@
       <x>250</x>
       <y>510</y>
       <width>101</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
@@ -326,7 +326,7 @@
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Lucida Grande'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Georgia,serif'; font-size:13.5pt; font-weight:600; color:#313142;&quot;&gt;Rules&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000;&quot;&gt;As in normal Tic-Tac-Toe, the game is played on a 3-by-3 board, and each of two players takes turns placing pieces, trying to get 3 in a row.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Arial,sans-serif'; font-size:11pt; color:#000000; background-color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
@@ -523,8 +523,8 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>799</width>
-     <height>21</height>
+     <width>845</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuQuantum_Tic_Tac_Toe">

@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <array>
 
-
 namespace Ui {
 class MainWindow;
 }
@@ -40,8 +39,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-//    QGraph *graph;
-//    ClassicalBoard *board;
 };
 
-#endif // MAINWINDOW_H
+#endif

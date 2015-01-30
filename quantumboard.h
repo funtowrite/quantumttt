@@ -28,11 +28,10 @@ public:
 
     void start(tictactoe_player const player);
     void update(int[3] , int, QGraph );
-    int findstartingelem(int i, int nextnode);
+    int findstartingelem(int i, int nextnode, int checknodelistsize);
 };
 
 tictactoe_game::tictactoe_game(){
-    cout << "Initialized game" << endl;
 };
 
 void tictactoe_game::start(tictactoe_player const player)
@@ -63,7 +62,6 @@ struct tictactoe_cell //indexes each vector representing a cell by its row and c
 
 void tictactoe_game::update(int getplayermove[3], int player, QGraph qgraph)
 {
-    cout<<"update has been called"<<endl;
     int cell1=getplayermove[0];
     int cell2=getplayermove[1];
     int turnnumber=getplayermove[2]; //get info about what the player did
@@ -80,44 +78,36 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
             twooptions[o][w] = 0;
         }
     }
-        cout<<"line 83"<<endl;
+
     int nextnode;
     list <int>::iterator it;
     it=nodelist.begin();
+
     //iterate thorugh all nodes in the nodelist
+    int previousnode=0;
+    int currentnode=999;
+
     for (int k=0; k<nodelist.size(); k++)
     {
-        cout<<"line 90"<<endl;
-        int currentnode= *it;
-        qDebug()<<"the iterator is pointing at"<<*it<<endl;
-        qDebug()<<"k is"<<k<<endl;
+        if (currentnode!=999)
+        {
+            previousnode=currentnode;
+        }
+        currentnode= *it;
         if (k<nodelist.size()-1)
         {
             advance(it,1);
             nextnode=*it;
-            qDebug()<<"line 87, next node is"<<nextnode<<endl;
         }
         else if (k==nodelist.size()-1)
         {
             it=nodelist.begin();
             nextnode=*it;
         }
-        int startfromhere=findstartingelem(currentnode, nextnode);
 
-        qDebug()<<"qstatus is"<<endl;
-        for (int o=0; o<9; o++){
-            for(int w=0; w<9; w++){
-                qDebug()<< qstatus[o][w];
-            }
-            qDebug()<<endl;
-        }
-
-        qDebug()<<"currentnode is "<<currentnode<<endl;
-            qDebug()<<"nextnode is "<<nextnode<< " startfrom here"<<startfromhere << "Will print the following symbol "<<qstatus[currentnode][startfromhere]<< " &&&&&&&" << qstatus[currentnode][startfromhere]<< endl;
+        int startfromhere=findstartingelem(currentnode, nextnode, previousnode);
         twooptions[0][currentnode]=qstatus[currentnode][startfromhere];
         twooptions[1][nextnode]=qstatus[currentnode][startfromhere];
-        cout<<"after currentnode is "<<currentnode<<endl;
-            cout<<"after nextnode is "<<nextnode<<endl;
     }
 
 
@@ -128,25 +118,29 @@ superqboard_status tictactoe_game::player_chooses_collapse(list<int> nodelist)
             qstatus[i][j] = 0;
         }
     }
-    //qstatus.fill(0);
-//    for (int p=0; p<9; p++){
-//        qstatus[p].fill(0);
-//    }
-//    memset(qstatus, 0, sizeof(qstatus[0][0]) * 9 * 9);
-
     return twooptions;
 }
 
-int tictactoe_game::findstartingelem(int i, int nextnode)
+int tictactoe_game::findstartingelem(int i, int nextnode, int previousnode)
 {
-    int startfromhere;
+    int count=0;
     //for each box, find the element that is not None,
     for (int j=0; j<9; ++j)
     {
         if (qstatus[i][j]!=0 && (qstatus[nextnode][j]==qstatus[i][j]))
         {
-            startfromhere=j;
+            if (previousnode!=nextnode)
+            {
+                return j;
+            }
+            else if (previousnode==nextnode)
+            {
+                count+=1;
+                if (count==2)
+                {
+                    return j;
+                }
+            }
         }
     }
-    return startfromhere;
 }
